@@ -78,6 +78,67 @@ namespace TUBES_FINAL.Database
                 Console.Error.WriteLine(e.StackTrace);
                 return null;
             }
+        }
+        
+        public static void InsertLecturer(Lecturer lecturer)
+        {
+            try
+            {
+                _queryString = $"INSERT INTO dosen (nama_dosen, nidn_dosen, email_dosen, password_dosen)" +
+                    $" VALUES ('{lecturer.PersonName}', '{lecturer.LecturerNIDN}', '{lecturer.PersonEmail}', '{lecturer.PersonPassword}')";
+                DBConn.Connection.Open();
+                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command.ExecuteNonQuery();
+                DBConn.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine(e.StackTrace);
+            }
+
+            Console.WriteLine($"Insert data {lecturer.LecturerNIDN} success");
 
         }
+
+        public static void DeleteLecturerByNIM(string NIDN)
+        {
+            try
+            {
+                _queryString = $"DELETE FROM dosen WHERE nidn_dosen = '{NIDN}'";
+                DBConn.Connection.Open();
+                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command.ExecuteNonQuery();
+                DBConn.Connection.Close();
+                Console.WriteLine($"Delete data {NIDN} success");
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine(e.StackTrace);
+            }
+
+
+        }
+
+        public static void UpdateLecturer(string nidn, string name, string email, string password)
+        {
+            try
+            {
+                _queryString = $"UPDATE dosen SET nama_dosen = {name}, email_dosen = {email}, " +
+                    $"password_dosen = {password} WHERE nidn_dosen = '{nidn}'";
+                DBConn.Connection.Open();
+                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command.ExecuteNonQuery();
+                DBConn.Connection.Close();
+                Console.WriteLine($"Update data {nidn} success");
+            }
+            catch(Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine(e.StackTrace);
+            }
+        }
+               
 }
