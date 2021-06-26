@@ -33,8 +33,6 @@ namespace TUBES_FINAL.Config
             {
                 Console.Error.WriteLine(e.ParamName);
             }
-            
-            
         }
 
         public List<T> ReadJson(string fileName)
