@@ -1,6 +1,6 @@
 namespace TUBES_FINAL.Database
 {
-    using LMS_TUBES.Model;
+    using TUBES_FINAL.Model;
     using System;
     using System.Collections.Generic;
     using MySql.Data.MySqlClient;
@@ -24,7 +24,7 @@ namespace TUBES_FINAL.Database
                 while (DBConn.Reader.Read())
                 {
                     _lecturerList.Add(
-                        new Lecturer(
+                        new LecturerModel(
                             DBConn.Reader["id_dosen"].ToString(),
                             DBConn.Reader["nama_dosen"].ToString(),
                             DBConn.Reader["email_dosen"].ToString(),
@@ -46,8 +46,8 @@ namespace TUBES_FINAL.Database
                 return null;
             }
         }
-        
-        public static Lecturer GetLecturerByNIDN(string NIDN)
+
+        public static LecturerModel GetLecturerByNIDN(string NIDN)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace TUBES_FINAL.Database
 
                 while (DBConn.Reader.Read())
                 {
-                    _lecturer = new Lecturer(
+                    _lecturer = new LecturerModel(
                             DBConn.Reader["id_dosen"].ToString(),
                             DBConn.Reader["nama_dosen"].ToString(),
                             DBConn.Reader["email_dosen"].ToString(),
@@ -79,8 +79,8 @@ namespace TUBES_FINAL.Database
                 return null;
             }
         }
-        
-        public static void InsertLecturer(Lecturer lecturer)
+
+        public static void InsertLecturer(LecturerModel lecturer)
         {
             try
             {
@@ -134,11 +134,11 @@ namespace TUBES_FINAL.Database
                 DBConn.Connection.Close();
                 Console.WriteLine($"Update data {nidn} success");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Error.WriteLine(e.Message);
                 Console.Error.WriteLine(e.StackTrace);
             }
         }
-               
+    }
 }
