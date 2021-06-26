@@ -32,4 +32,36 @@ namespace TUBES_FINAL.Config
 
             return BCrypt.HashPassword(inputParams);
         }
+        
+        public static string ReturnIndexAccount(List<Student> studentList, string email, string password)
+        {
+            foreach (var item in studentList)
+            {
+                if (item.PersonEmail.CompareTo(email) == 0)
+                {
+                    if (AccountConfig.IsPasswordCorrect(password, item.PersonPassword))
+                    {
+                        return item.StudentNIM;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        public static string ReturnIndexAccount(List<Lecturer> lecturerList, string email, string password)
+        {
+            foreach (var item in lecturerList)
+            {
+                if (item.PersonEmail.CompareTo(email) == 0)
+                {
+                    if (AccountConfig.IsPasswordCorrect(password, item.PersonPassword))
+                    {
+                        return item.LecturerNIDN;
+                    }
+                }
+            }
+            return null;
+        }
+
+    }
 }
