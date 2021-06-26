@@ -18,6 +18,16 @@ namespace TUBES_FINAL.Config
             if (String.IsNullOrEmpty(inputParams))
                 throw new ArgumentNullException("Input should not be blank!");
         }
+        
+        public static void SanitizeInputNotNull(params string[] inputParams)
+        {
+            foreach(var item in inputParams)
+            {
+                if (String.IsNullOrEmpty(item))
+                    throw new ArgumentNullException("Input should not be blank!");
+            }
+
+        }
 
         public static void SanitizeInputNotNull<T>(List<T> inputParams)
         {
