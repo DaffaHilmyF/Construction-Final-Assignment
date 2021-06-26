@@ -1,4 +1,4 @@
-namespace LMS_TUBES.Config
+namespace TUBES_FINAL.Config
 {
     using Newtonsoft.Json;
     using System;
