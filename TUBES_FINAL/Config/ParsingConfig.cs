@@ -1,4 +1,4 @@
-namespace LMS_TUBES.Config
+namespace TUBES_FINAL.Config
 {
     using Newtonsoft.Json;
     using System;
@@ -33,8 +33,6 @@ namespace LMS_TUBES.Config
             {
                 Console.Error.WriteLine(e.ParamName);
             }
-            
-            
         }
 
         public List<T> ReadJson(string fileName)
