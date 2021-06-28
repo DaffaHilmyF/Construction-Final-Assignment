@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DF85AEC1-E783-4B85-AC87-E898B1BDA861}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>TUBES_FINAL</RootNamespace>
     <AssemblyName>TUBES_FINAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.2.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
@@ -101,6 +104,7 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Database\DBConn.cs" />
     <Compile Include="Database\DBLecturer.cs" />
+    <Compile Include="Database\DBStudent.cs" />
     <Compile Include="Model\LecturerModel.cs" />
     <Compile Include="Model\PersonModel.cs" />
     <Compile Include="Model\StudentModel.cs" />
@@ -139,9 +143,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Button_Submit.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Background_Login1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button_Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button_StudentRegister.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button_LecturerRegister.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

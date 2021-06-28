@@ -20,6 +20,19 @@
             controller = login;
         }
 
+        private void B_Login_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void B_Register_Lecturer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void B_Register_Student_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
