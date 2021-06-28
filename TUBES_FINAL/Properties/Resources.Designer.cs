@@ -73,6 +73,26 @@ namespace TUBES_FINAL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background_Register {
+            get {
+                object obj = ResourceManager.GetObject("Background_Register", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Background_Register_Dosen {
+            get {
+                object obj = ResourceManager.GetObject("Background_Register_Dosen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Background_RegisterStudent {
             get {
                 object obj = ResourceManager.GetObject("Background_RegisterStudent", resourceCulture);

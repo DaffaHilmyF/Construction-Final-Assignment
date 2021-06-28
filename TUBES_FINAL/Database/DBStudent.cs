@@ -10,7 +10,7 @@
 
     public static class DBStudent
     {
-        private static StudentModel studentData;
+       
         private static List<StudentModel> studentList;
         private static string queryString;
 
@@ -54,7 +54,27 @@
                 Console.Error.WriteLine(e.StackTrace);
                 return null;
             }
+        }
 
+        public static void InsertStudent(StudentModel student)
+        {
+            try
+            {
+                queryString = $"INSERT INTO mahasiswa (nama_mahasiswa, nim_mahasiswa, email_mahasiswa, password_mahasiswa, tahun_mahasiswa)" +
+                    $" VALUES ('{student.PersonName}', '{student.StudentNIM}', '{student.PersonEmail}', '{student.PersonPassword}', '{student.StudentYear}')";
+                DBConn.Connection.Open();
+                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
+                DBConn.Command.ExecuteNonQuery();
+                DBConn.Connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine(e.StackTrace);
+            }
+
+            Console.WriteLine($"Insert data {student.StudentNIM} success");
 
         }
 

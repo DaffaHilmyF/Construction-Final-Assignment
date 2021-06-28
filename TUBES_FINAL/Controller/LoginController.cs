@@ -29,7 +29,7 @@
         public void MoveToLecturerRegister()
         {
             LoginView.Hide();
-            
+            RegisterLecturerController getForm = new RegisterLecturerController();
         }
 
         public void MoveToDashboard(string email, string password)

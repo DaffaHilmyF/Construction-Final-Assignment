@@ -29,7 +29,7 @@
         {
             try
             {
-                controller.MoveToStudentRegister();
+                controller.MoveToLecturerRegister();
 
             }
             catch (Exception ex)

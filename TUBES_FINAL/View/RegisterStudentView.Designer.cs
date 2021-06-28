@@ -105,6 +105,7 @@ namespace TUBES_FINAL.View
             this.B_Submit.Size = new System.Drawing.Size(115, 50);
             this.B_Submit.TabIndex = 6;
             this.B_Submit.TabStop = false;
+            this.B_Submit.Click += new System.EventHandler(this.B_Submit_Click);
             // 
             // B_Back
             // 

@@ -11,13 +11,13 @@
     using System.Windows.Forms;
     using TUBES_FINAL.Controller;
 
-    public partial class RegisterStudentView : Form
+    public partial class RegisterLecturerView : Form
     {
-        private RegisterStudentController controller;
-        public RegisterStudentView(RegisterStudentController register)
+        private RegisterLecturerController controller;
+        public RegisterLecturerView(RegisterLecturerController regist)
         {
             InitializeComponent();
-            controller = register;
+            controller = regist;
         }
 
         private void B_Back_Click(object sender, EventArgs e)
@@ -26,10 +26,11 @@
             {
                 controller.BackToLogin();
 
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                Console.Error.WriteLine(ex.StackTrace);
+                Console.Error.WriteLine(ex.Message);
             }
         }
 
@@ -39,14 +40,14 @@
             {
                 controller.CreateAccount(
                         NameField.Text,
-                        NIMField.Text,
-                        YearField.Text,
+                        NIDNField.Text,
                         EmailField.Text,
-                        PasswordField.Text    
+                        PasswordField.Text
                     );
-                MessageBox.Show("Sucess");
 
-            }catch(Exception ex)
+                MessageBox.Show("Success");
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 Console.Error.WriteLine(ex.StackTrace);
