@@ -1,7 +1,7 @@
 namespace TUBES_FINAL.Config
 {
     using BCrypt.Net;
-    using LMS_TUBES.Model;
+    using TUBES_FINAL.Model;
     using System.Collections.Generic;
 
     public static class AccountConfig
@@ -33,7 +33,7 @@ namespace TUBES_FINAL.Config
             return BCrypt.HashPassword(inputParams);
         }
         
-        public static string ReturnIndexAccount(List<Student> studentList, string email, string password)
+        public static string ReturnIndexAccount(List<StudentModel> studentList, string email, string password)
         {
             foreach (var item in studentList)
             {
@@ -48,7 +48,7 @@ namespace TUBES_FINAL.Config
             return null;
         }
         
-        public static string ReturnIndexAccount(List<Lecturer> lecturerList, string email, string password)
+        public static string ReturnIndexAccount(List<LecturerModel> lecturerList, string email, string password)
         {
             foreach (var item in lecturerList)
             {
