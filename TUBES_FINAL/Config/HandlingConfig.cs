@@ -63,29 +63,12 @@ namespace TUBES_FINAL.Config
                 throw new OverflowException("Input is overflow");
         }
 
+
+
         public static void SanitizeInputNotNegative(int inputParams)
         {
             if (inputParams < 0)
                 throw new OverflowException("Input value is cannot below zero");
         }
-        
-        public static void SanitizeInputDomainLecturerIsCorrect(string inputParams)
-        {
-            Regex domainEmail = new Regex(@"^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(telkomuniversity)\.ac.id$");
-
-            if (!domainEmail.IsMatch(inputParams))
-                throw new FormatException("Domain email is invalid");
-            
-        }
-
-        public static void SanitizeInputDomainStudentIsCorrect(string inputParams)
-        {
-            Regex domainEmail = new Regex(@"^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(student.telkomuniversity)\.ac.id$");
-
-            if (!domainEmail.IsMatch(inputParams))
-                throw new FormatException("Domain email is invalid");
-           
-        }
-        
     }
 }
