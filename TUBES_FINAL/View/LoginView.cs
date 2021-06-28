@@ -27,12 +27,29 @@
 
         private void B_Register_Lecturer_Click(object sender, EventArgs e)
         {
+            try
+            {
+                controller.MoveToStudentRegister();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.Error.WriteLine(ex.StackTrace);
+            }
         }
 
         private void B_Register_Student_Click(object sender, EventArgs e)
         {
+            try
+            {
+                controller.MoveToStudentRegister();
 
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.Error.WriteLine(ex.StackTrace);
+            }
         }
     }
 }

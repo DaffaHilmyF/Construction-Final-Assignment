@@ -20,7 +20,18 @@
             LoginView.Show();
         }
 
-        
+        public void MoveToStudentRegister()
+        {
+            LoginView.Hide();
+            RegisterStudentController getForm = new RegisterStudentController();
+        }
+
+        public void MoveToLecturerRegister()
+        {
+            LoginView.Hide();
+            
+        }
+
         public void MoveToDashboard(string email, string password)
         {
             HandlingConfig.SanitizeInputNotNull(email, password);
@@ -46,6 +57,9 @@
                         indexUser = item.PersonID;
                 }
             }
+
+
+            
 
         }
 
