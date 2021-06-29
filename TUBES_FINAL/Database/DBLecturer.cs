@@ -145,27 +145,6 @@ namespace TUBES_FINAL.Database
             }
         }
 
-        public static void UpdateLecturer(string nidn, string name, string email, string password)
-        {
-            try
-            {
-                queryString =   $"UPDATE dosen SET nama_dosen = {name}, " +
-                                $"email_dosen = {email}, " +
-                                $"password_dosen = {password} " +
-                                $"WHERE nidn_dosen = '{nidn}'";
-
-                DBConn.Connection.Open();
-                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
-                DBConn.Command.ExecuteNonQuery();
-                DBConn.Connection.Close();
-
-                Console.WriteLine($"Update data {nidn} success");
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                Console.Error.WriteLine(e.StackTrace);
-            }
-        }
+       
     }
 }
