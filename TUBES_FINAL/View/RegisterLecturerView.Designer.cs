@@ -41,6 +41,7 @@ namespace TUBES_FINAL.View
             // 
             // B_Back
             // 
+            this.B_Back.BackColor = System.Drawing.Color.Transparent;
             this.B_Back.BackgroundImage = global::TUBES_FINAL.Properties.Resources.Button_Back__2_;
             this.B_Back.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.B_Back.Location = new System.Drawing.Point(719, 419);
@@ -52,6 +53,7 @@ namespace TUBES_FINAL.View
             // 
             // B_Submit
             // 
+            this.B_Submit.BackColor = System.Drawing.Color.Transparent;
             this.B_Submit.BackgroundImage = global::TUBES_FINAL.Properties.Resources.Button_Submit;
             this.B_Submit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.B_Submit.Location = new System.Drawing.Point(857, 419);
@@ -102,6 +104,7 @@ namespace TUBES_FINAL.View
             this.PasswordField.ForeColor = System.Drawing.Color.Black;
             this.PasswordField.Location = new System.Drawing.Point(648, 371);
             this.PasswordField.Name = "PasswordField";
+            this.PasswordField.PasswordChar = '*';
             this.PasswordField.Size = new System.Drawing.Size(306, 20);
             this.PasswordField.TabIndex = 13;
             // 
