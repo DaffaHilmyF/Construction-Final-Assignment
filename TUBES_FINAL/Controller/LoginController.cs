@@ -33,6 +33,9 @@
         private bool FindUserAccount(List<StudentModel> studentList, List<LecturerModel> lecturerList,
             string email, string password)
         {
+            HandlingConfig.SanitizeInputNotNull<List<LecturerModel>>(lecturerList);
+            HandlingConfig.SanitizeInputNotNull<List<StudentModel>>(studentList);
+            
             string indexUser;
 
             foreach (var item in lecturerList)

@@ -7,8 +7,8 @@ namespace TUBES_FINAL.Database
 
     sealed class DBConn
     {
-        private readonly string _connString = "server=localhost;user=root;database=kpl_tubes;port=3306;password=";
-        private static DBConn _createConnection = null;
+        private readonly string connString = "server=localhost;user=root;database=kpl_tubes;port=3306;password=";
+        private static DBConn createConnection = null;
         public static MySqlConnection Connection;
         public static MySqlCommand Command;
         public static MySqlDataReader Reader;
@@ -18,7 +18,7 @@ namespace TUBES_FINAL.Database
         {
             try
             {
-                Connection = new MySqlConnection(_connString);
+                Connection = new MySqlConnection(connString);
                 Console.WriteLine("Connecting to MySQL...");
             }
             catch (Exception e)
@@ -33,10 +33,10 @@ namespace TUBES_FINAL.Database
         {
             get
             {
-                if (_createConnection == null)
-                    _createConnection = new DBConn();
+                if (createConnection == null)
+                    createConnection = new DBConn();
 
-                return _createConnection;
+                return createConnection;
             }
         }
 
