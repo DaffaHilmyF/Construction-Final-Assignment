@@ -35,9 +35,11 @@ namespace TUBES_FINAL.Controller
 
             password = AccountConfig.PasswordHashed(password);
 
-            DBLecturer.InsertLecturer(new LecturerModel(
-                        name, email, password, nidn
-                ));
+            DBLecturer.InsertLecturer(
+                new LecturerModel(
+                    name, email, password, nidn
+                )
+            );
 
         }
     }
