@@ -28,7 +28,7 @@ namespace TUBES_FINAL.Controller
 
         internal void CreateAccount(string name, string nidn, string email, string password) 
         {
-            HandlingConfig.SanitizeInputNotNull<string>(name, nidn, email, password);
+            HandlingConfig.SanitizeInputNotNull(name, nidn, email, password);
             HandlingConfig.SanitizeInputIsNumeric(nidn);
             HandlingConfig.SanitizeInputLengthIsCorrect(nidn, 10);
             AccountConfig.IsDomainEmailLecturerCorrect(email);
