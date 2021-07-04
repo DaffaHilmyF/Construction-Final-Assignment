@@ -59,7 +59,7 @@ namespace TUBES_FINAL.Config
 
         public static void SanitizeInputNotOverflow(int inputParams)
         {
-            if ((inputParams > Int32.MaxValue) || (inputParams < Int32.MinValue))
+            if ((inputParams == Int32.MaxValue) || (inputParams == Int32.MinValue))
                 throw new OverflowException("Input is overflow");
         }
 
