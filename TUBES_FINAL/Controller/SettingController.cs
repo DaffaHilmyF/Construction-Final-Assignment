@@ -24,7 +24,11 @@
 
         private bool FindUserAccount(List<StudentModel> studentList, List<LecturerModel> lecturerList
             , string name, string email, string password)
-        {            
+        {    
+            
+            HandlingConfig.SanitizeInputNotNull<List<StudentModel>>(studentList);
+            HandlingConfig.SanitizeInputNotNull<List<LecturerModel>>(lecturerList);
+            
             foreach(var item in studentList)
             { 
                 if(item.StudentNIM.CompareTo(indexUser) == 0)
