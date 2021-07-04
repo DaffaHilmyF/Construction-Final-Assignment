@@ -7,23 +7,23 @@ namespace TUBES_FINAL.Database
 
     public static class DBLecturer
     {
-        private static LecturerModel _lecturer;
-        private static List<LecturerModel> _lecturerList;
-        private static string _queryString;
+        private static LecturerModel lecturerData;
+        private static List<LecturerModel> lecturerList;
+        private static string queryString;
 
         public static List<LecturerModel> GetAllLecturer()
         {
             try
             {
-                _lecturerList = new List<LecturerModel>();
-                _queryString = "SELECT * FROM dosen";
+                lecturerList = new List<LecturerModel>();
+                queryString = "SELECT * FROM dosen";
                 DBConn.Connection.Open();
-                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
                 DBConn.Reader = DBConn.Command.ExecuteReader();
 
                 while (DBConn.Reader.Read())
                 {
-                    _lecturerList.Add(
+                    lecturerList.Add(
                         new LecturerModel(
                             DBConn.Reader["id_dosen"].ToString(),
                             DBConn.Reader["nama_dosen"].ToString(),
@@ -36,7 +36,7 @@ namespace TUBES_FINAL.Database
 
                 DBConn.Reader.Close();
                 DBConn.Connection.Close();
-                return _lecturerList;
+                return lecturerList;
 
             }
             catch (Exception e)
@@ -47,18 +47,42 @@ namespace TUBES_FINAL.Database
             }
         }
 
+        internal static void UpdateLecturer(string indexUser, LecturerModel lecturer)
+        {
+            try
+            {
+                queryString =   $"UPDATE `dosen` SET " +
+                                $"`nama_dosen`= '{lecturer.PersonName}'," + 
+                                $"`email_dosen`= '{lecturer.PersonEmail}'," +
+                                $"`password_dosen`= '{lecturer.PersonPassword}' " +
+                                $"WHERE `nidn_dosen` = '{indexUser}';";
+
+                DBConn.Connection.Open();
+                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
+                DBConn.Command.ExecuteNonQuery();
+                DBConn.Connection.Close();
+                
+                Console.WriteLine($"Update data {indexUser} success");
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine(e.StackTrace);
+            }
+        }
+
         public static LecturerModel GetLecturerByNIDN(string NIDN)
         {
             try
             {
-                _queryString = $"SELECT * FROM dosen WHERE nidn_dosen = '{NIDN}'";
+                queryString = $"SELECT * FROM dosen WHERE nidn_dosen = '{NIDN}'";
                 DBConn.Connection.Open();
-                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
                 DBConn.Reader = DBConn.Command.ExecuteReader();
 
                 while (DBConn.Reader.Read())
                 {
-                    _lecturer = new LecturerModel(
+                    lecturerData = new LecturerModel(
                             DBConn.Reader["id_dosen"].ToString(),
                             DBConn.Reader["nama_dosen"].ToString(),
                             DBConn.Reader["email_dosen"].ToString(),
@@ -69,7 +93,7 @@ namespace TUBES_FINAL.Database
 
                 DBConn.Reader.Close();
                 DBConn.Connection.Close();
-                return _lecturer;
+                return lecturerData;
 
             }
             catch (Exception e)
@@ -84,10 +108,12 @@ namespace TUBES_FINAL.Database
         {
             try
             {
-                _queryString = $"INSERT INTO dosen (nama_dosen, nidn_dosen, email_dosen, password_dosen)" +
-                    $" VALUES ('{lecturer.PersonName}', '{lecturer.LecturerNIDN}', '{lecturer.PersonEmail}', '{lecturer.PersonPassword}')";
+                queryString =   $"INSERT INTO dosen (nama_dosen, nidn_dosen, email_dosen, password_dosen)" +
+                                $" VALUES ('{lecturer.PersonName}', '{lecturer.LecturerNIDN}',  " +
+                                $"'{lecturer.PersonEmail}', '{lecturer.PersonPassword}')";
+
                 DBConn.Connection.Open();
-                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
                 DBConn.Command.ExecuteNonQuery();
                 DBConn.Connection.Close();
 
@@ -99,16 +125,15 @@ namespace TUBES_FINAL.Database
             }
 
             Console.WriteLine($"Insert data {lecturer.LecturerNIDN} success");
-
         }
 
         public static void DeleteLecturerByNIM(string NIDN)
         {
             try
             {
-                _queryString = $"DELETE FROM dosen WHERE nidn_dosen = '{NIDN}'";
+                queryString = $"DELETE FROM dosen WHERE nidn_dosen = '{NIDN}'";
                 DBConn.Connection.Open();
-                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
+                DBConn.Command = new MySqlCommand(queryString, DBConn.Connection);
                 DBConn.Command.ExecuteNonQuery();
                 DBConn.Connection.Close();
                 Console.WriteLine($"Delete data {NIDN} success");
@@ -118,27 +143,8 @@ namespace TUBES_FINAL.Database
                 Console.Error.WriteLine(e.Message);
                 Console.Error.WriteLine(e.StackTrace);
             }
-
-
         }
 
-        public static void UpdateLecturer(string nidn, string name, string email, string password)
-        {
-            try
-            {
-                _queryString = $"UPDATE dosen SET nama_dosen = {name}, email_dosen = {email}, " +
-                    $"password_dosen = {password} WHERE nidn_dosen = '{nidn}'";
-                DBConn.Connection.Open();
-                DBConn.Command = new MySqlCommand(_queryString, DBConn.Connection);
-                DBConn.Command.ExecuteNonQuery();
-                DBConn.Connection.Close();
-                Console.WriteLine($"Update data {nidn} success");
-            }
-            catch (Exception e)
-            {
-                Console.Error.WriteLine(e.Message);
-                Console.Error.WriteLine(e.StackTrace);
-            }
-        }
+       
     }
 }
